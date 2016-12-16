@@ -42,11 +42,14 @@ all the information will help us to troubleshooting the database performance iss
 currently oneindex just face to SQL Server 2005 or above.
 
 operation introduction,
-setup1, 
+setup1 
 open ssms tools and execute the script "oneindex_Setup1_Create Table.sql", to create related tables used in storing collect infornation.
-setup2, 
+
+setup2 
 continue to execute the script "oneindex_Setup2_Create Procdure.sql", to create related produrces used in collecting infornation.
-setup3, 
+
+setup3
 continue to execute the script "oneindex_Setup3__Create Job.sql", to create related Jobs used in collecting data schedlue.
-setup4, 
+
+setup4 
 Finanlly, execute the script "oneindex_Setup4_Query Result.sql", to query the result.
