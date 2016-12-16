@@ -4,6 +4,7 @@ this project help dba or database support people to collect index related inform
 
 
 ///////////////////////////////////////////////
+
 a. table information
 
 table_name
@@ -19,6 +20,7 @@ table_size(GB)
 table_rows
 
 ///////////////////////////////////////////////
+
 b. index basic infomation
 index_name
 
@@ -39,12 +41,14 @@ is_Primary_key
 is_unique
 
 ///////////////////////////////////////////////
+
 c. index usage info
 user_seeks	
 user_scans	
 user_lookups
 
 ///////////////////////////////////////////////
+
 d. index maintence information
 user_updates	
 user_reads	
@@ -53,12 +57,14 @@ last_user_scan
 last_user_update
 
 ///////////////////////////////////////////////
+
 all the information will help us to troubleshooting the database performance issue, and finallly find the better solution.
 currently oneindex just face to SQL Server 2005 or above.
 
 
 
 ///////////////////////////////////////////////
+
 operation introduction,
 setup1 
 open ssms tools and execute the script "oneindex_Setup1_Create Table.sql", to create related tables used in storing collect infornation.
