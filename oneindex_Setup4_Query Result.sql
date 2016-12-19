@@ -1,36 +1,42 @@
-/****** Object:  StoredProcedure[]   Script Date: 9/9/2016-12 ******/
+
+/***********************************************************************
+Copyright 2016, Sam Zhao- 
+MIT License, http://www.opensource.org/licenses/mit-license.php
+Object:  StoredProcedure[]   Script Date: 9/9/2016-12
+***********************************************************************/
+
 --////////////////////////////////////////////////////////////////////////////////////////////////////////
-SELECT    dbo.temptbl_dba_indexcolumns.utable_name as '±íÃû'			
-		, dbo.temptbl_dba_tableratio.ratios as '±í¶ÁĞ´±È'	
-	    , dbo.temptbl_dba_tableratio.reads  as '±í¶Á´ÎÊı'		
-		, dbo.temptbl_dba_tableratio.writes as '±íĞ´´ÎÊı'	
-		, dbo.temptbl_dba_tableinfo.reserved_gb as '±í´óĞ¡(GB)'	
-		, dbo.temptbl_dba_tableinfo.rows as '±íĞĞÊı'	
+SELECT    dbo.temptbl_dba_indexcolumns.utable_name as 'è¡¨å'			
+		, dbo.temptbl_dba_tableratio.ratios as 'è¡¨è¯»å†™æ¯”'	
+	    , dbo.temptbl_dba_tableratio.reads  as 'è¡¨è¯»æ¬¡æ•°'		
+		, dbo.temptbl_dba_tableratio.writes as 'è¡¨å†™æ¬¡æ•°'	
+		, dbo.temptbl_dba_tableinfo.reserved_gb as 'è¡¨å¤§å°(GB)'	
+		, dbo.temptbl_dba_tableinfo.rows as 'è¡¨è¡Œæ•°'	
 		--, dbo.temptbl_dba_tableinfo.unused_kb	
-		, dbo.temptbl_dba_indexcolumns.uindex_name as 'Ë÷ÒıÃû³Æ' 
-		, dbo.temptbl_dba_indexcolumns.is_disabled as 'ÊÇ·ñ¿ÉÓÃ' 	
-		, dbo.temptbl_dba_tableinfo.index_gb	as 'Ë÷Òı´óĞ¡(MB)'
-		, dbo.temptbl_dba_indexcolumns.fill_factor	as 'Ìî³äÒò×Ó'
-		, dbo.temptbl_dba_indexfrag.avg_frag_percent as 'Ë÷ÒıËéÆ¬%'	
-		, dbo.temptbl_dba_indexfrag.index_type_desc as 'Ë÷ÒıÀàĞÍ' 	
-		, dbo.temptbl_dba_indexupdate.update_percent as 'Ë÷Òı¸üĞÂ±ÈÂÊ%'	
-		, dbo.temptbl_dba_indexfrag.index_depth 'Ë÷ÒıÉî¶È'	
-		, dbo.temptbl_dba_indexfrag.page_count 'Ë÷Òı°üº¬Ò³Êı'	
-	    , dbo.temptbl_dba_indexcolumns.index_keys as 'Ë÷Òı×Ö¶Î'		
-		, dbo.temptbl_dba_indexcolumns.included_columns as 'Ë÷Òı°üº¬×Ö¶Î' 	
-		, dbo.temptbl_dba_indexcolumns.is_Primary_key as 'ÊÇ·ñÖ÷¼ü'	
-		, dbo.temptbl_dba_indexcolumns.is_unique as 'ÊÇ·ñÎ¨Ò»'	
+		, dbo.temptbl_dba_indexcolumns.uindex_name as 'ç´¢å¼•åç§°' 
+		, dbo.temptbl_dba_indexcolumns.is_disabled as 'æ˜¯å¦å¯ç”¨' 	
+		, dbo.temptbl_dba_tableinfo.index_gb	as 'ç´¢å¼•å¤§å°(MB)'
+		, dbo.temptbl_dba_indexcolumns.fill_factor	as 'å¡«å……å› å­'
+		, dbo.temptbl_dba_indexfrag.avg_frag_percent as 'ç´¢å¼•ç¢ç‰‡%'	
+		, dbo.temptbl_dba_indexfrag.index_type_desc as 'ç´¢å¼•ç±»å‹' 	
+		, dbo.temptbl_dba_indexupdate.update_percent as 'ç´¢å¼•æ›´æ–°æ¯”ç‡%'	
+		, dbo.temptbl_dba_indexfrag.index_depth 'ç´¢å¼•æ·±åº¦'	
+		, dbo.temptbl_dba_indexfrag.page_count 'ç´¢å¼•åŒ…å«é¡µæ•°'	
+	    , dbo.temptbl_dba_indexcolumns.index_keys as 'ç´¢å¼•å­—æ®µ'		
+		, dbo.temptbl_dba_indexcolumns.included_columns as 'ç´¢å¼•åŒ…å«å­—æ®µ' 	
+		, dbo.temptbl_dba_indexcolumns.is_Primary_key as 'æ˜¯å¦ä¸»é”®'	
+		, dbo.temptbl_dba_indexcolumns.is_unique as 'æ˜¯å¦å”¯ä¸€'	
 		--, dbo.temptbl_dba_indexcolumns.is_unique_constraint	
 			
-		, dbo.temptbl_dba_indexusage.user_seeks	 as'±»Seek´ÎÊı'
-		, dbo.temptbl_dba_indexusage.user_scans	 as'±»Scan´ÎÊı'
-		, dbo.temptbl_dba_indexusage.user_lookups	 as'±»ÊéÇ©²éÕÒ´ÎÊı'
-		, dbo.temptbl_dba_indexusage.user_updates	 as'±»¸üĞÂ´ÎÊı'
-		, dbo.temptbl_dba_indexusage.user_reads	 as'±»¶ÁÈ¡´ÎÊı'
-		, dbo.temptbl_dba_indexusage.user_writes	 as'±»Ğ´ÈË´ÎÊı'
-		, dbo.temptbl_dba_indexusage.last_user_scan	 as'×îºó±»ScanÊ±¼ä'
-		, dbo.temptbl_dba_indexusage.last_user_update	as 'Ë÷Òı×îºó±»¸üĞÂÊ±¼ä'
-		, dbo.temptbl_dba_indexusage.get_datetime     as '×¥È¡Êı¾İÊ±¼ä' 	
+		, dbo.temptbl_dba_indexusage.user_seeks	 as'è¢«Seekæ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.user_scans	 as'è¢«Scanæ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.user_lookups	 as'è¢«ä¹¦ç­¾æŸ¥æ‰¾æ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.user_updates	 as'è¢«æ›´æ–°æ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.user_reads	 as'è¢«è¯»å–æ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.user_writes	 as'è¢«å†™äººæ¬¡æ•°'
+		, dbo.temptbl_dba_indexusage.last_user_scan	 as'æœ€åè¢«Scanæ—¶é—´'
+		, dbo.temptbl_dba_indexusage.last_user_update	as 'ç´¢å¼•æœ€åè¢«æ›´æ–°æ—¶é—´'
+		, dbo.temptbl_dba_indexusage.get_datetime     as 'æŠ“å–æ•°æ®æ—¶é—´' 	
 			
            	
 FROM  dbo.temptbl_dba_indexcolumns			
