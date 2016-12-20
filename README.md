@@ -22,6 +22,7 @@ table_rows
 ///////////////////////////////////////////////
 
 b. index basic infomation
+
 index_name
 
 index_size(MB)
@@ -43,6 +44,7 @@ is_unique
 ///////////////////////////////////////////////
 
 c. index usage info
+
 user_seeks	
 user_scans	
 user_lookups
@@ -50,6 +52,7 @@ user_lookups
 ///////////////////////////////////////////////
 
 d. index maintence information
+
 user_updates	
 user_reads	
 user_writes	
@@ -65,15 +68,13 @@ currently oneindex just face to SQL Server 2005 or above.
 
 ///////////////////////////////////////////////
 
-operation introduction,
-setup1 
-open ssms tools and execute the script "oneindex_Setup1_Create Table.sql", to create related tables used in storing collect infornation.
+1. open ssms tools and execute the script "oneindex_Setup1_Create Table.sql", to create related tables used in storing collect infornation.
 
-setup2 
-continue to execute the script "oneindex_Setup2_Create Procdure.sql", to create related produrces used in collecting infornation.
+2. continue to execute the script "oneindex_Setup2_Create Procdure.sql", to create related produrces used in collecting infornation.
 
-setup3
-continue to execute the script "oneindex_Setup3__Create Job.sql", to create related Jobs used in collecting data schedlue.
+3. continue to execute the script "oneindex_Setup3__Create Job.sql", to create related Jobs used in collecting data schedlue.
 
-setup4 
-Finanlly, execute the script "oneindex_Setup4_Query Result.sql", to query the result.
+4. Finanlly, execute the script "oneindex_Setup4_Query Result.sql", to query the result.
+
+
+<end>
