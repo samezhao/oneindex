@@ -1,9 +1,9 @@
-
 /***********************************************************************
-Copyright 2016, Sam Zhao- 
+Copyright 2016, @Sam Zhao- 
 MIT License, http://www.opensource.org/licenses/mit-license.php
-Object:  StoredProcedure[]   Script Date: 9/9/2016-12
+Object:  StoredProcedure[]   Script Date: 9/12/2016
 ***********************************************************************/
+
 
 --////////////////////////////////////////////////////////////////////////////////////////////////////////
 SELECT    dbo.temptbl_dba_indexcolumns.utable_name as '表名'			
