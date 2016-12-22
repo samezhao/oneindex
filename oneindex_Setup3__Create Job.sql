@@ -1,4 +1,9 @@
-/****** Object:  StoredProcedure[]   Script Date: 9/9/2014 10:02:33 PM ******/
+/***********************************************************************
+Copyright 2016, @Sam Zhao- 
+MIT License, http://www.opensource.org/licenses/mit-license.php
+Object:  StoredProcedure[]   Script Date: 9/12/2016
+***********************************************************************/
+
 
 USE [msdb]
 GO
@@ -31,7 +36,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'Maintenance-CollectData',
 		@notify_level_netsend=0, 
 		@notify_level_page=0, 
 		@delete_level=0, 
-		@description=N'ÎÞÃèÊö¡£', 
+		@description=N'ÃŽÃžÃƒÃ¨ÃŠÃ¶Â¡Â£', 
 		@category_name=N'Database Maintenance', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
