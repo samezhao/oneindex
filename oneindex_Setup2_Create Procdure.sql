@@ -1,4 +1,9 @@
-/****** Object:  StoredProcedure[]   Script Date: 9/9/2016-12 ******/
+/***********************************************************************
+Copyright 2016, @Sam Zhao- 
+MIT License, http://www.opensource.org/licenses/mit-license.php
+Object:  StoredProcedure[]   Script Date: 9/12/2016
+***********************************************************************/
+
 
 USE [yourdatabasename]
 GO
@@ -326,7 +331,7 @@ INSERT INTO [yourdatabasename].[dbo].[temptbl_dba_indexusage]
            ,[row_count]
            ,[get_datetime])
            
---²é¿´Ë÷ÒıÊ¹ÓÃÇé¿ö
+--æŸ¥çœ‹ç´¢å¼•ä½¿ç”¨æƒ…å†µ
 SELECT 
        a.*,t.row_count,CONVERT(varchar(10),getdate(),120) AS get_datetime --into  temptbl_indexusageinfo
 FROM
@@ -428,7 +433,7 @@ WHILE @@FETCH_STATUS = 0
 CLOSE Info_cursor  
 DEALLOCATE Info_cursor  
  
---´´½¨ÁÙÊ±±í
+--åˆ›å»ºä¸´æ—¶è¡¨
 CREATE TABLE [#tmptb]
     (
       TableName VARCHAR(50) ,
@@ -443,7 +448,7 @@ CREATE TABLE [#tmptb]
 
 
 
---²åÈëÊı¾İµ½ÁÙÊ±±í
+--æ’å…¥æ•°æ®åˆ°ä¸´æ—¶è¡¨
 INSERT  INTO [#tmptb]
         ( [TableName] ,
           [DataInfo] ,
@@ -457,7 +462,7 @@ INSERT  INTO [#tmptb]
         ORDER BY CAST(REPLACE(reserved, 'KB', '') AS INT) DESC  
 
 
---»ã×Ü¼ÇÂ¼
+--æ±‡æ€»è®°å½•
 
 INSERT INTO dbo.temptbl_dba_tableinfo
     (	   [utable_name]
