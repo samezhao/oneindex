@@ -1,4 +1,9 @@
-/****** Object:  StoredProcedure[]   Script Date: 9/9/2016-12 ******/
+/***********************************************************************
+Copyright 2016, @Sam Zhao- 
+MIT License, http://www.opensource.org/licenses/mit-license.php
+Object:  StoredProcedure[]   Script Date: 9/12/2016
+***********************************************************************/
+
 
 USE [yourdatabasename]
 GO
