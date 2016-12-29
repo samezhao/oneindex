@@ -210,6 +210,8 @@ CREATE TABLE [dbo].[temptbl_dba_indexcolumns](
 	[is_unique_constraint] [bit] NULL,
 	[is_Filtered_index] [bit] NULL,
 	[FilterDefinition] [nvarchar](max) NULL,
+	[is_disabled] [nchar](10) NULL,
+	[fill_factor] [nchar](10) NULL,
 	[get_datetime] [varchar](10) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
