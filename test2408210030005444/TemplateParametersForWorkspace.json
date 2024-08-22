@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "test2408210030005444"
+		},
+		"test2408210030005444-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test2408210030005444.sql.azuresynapse.azure.cn,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"test2408210030005444-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://storagenorth3.dfs.core.chinacloudapi.cn"
+		}
+	}
+}
