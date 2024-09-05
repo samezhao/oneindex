@@ -2,7 +2,7 @@
 	"name": "Notebook 1",
 	"properties": {
 		"folder": {
-			"name": "001/003"
+			"name": "003"
 		},
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -16,7 +16,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "dcd8596a-e7f6-4c51-91cc-633fa00a2f03"
+				"spark.autotune.trackingId": "2847f2d1-8d85-435a-8217-bcc3818098f7"
 			}
 		},
 		"metadata": {
