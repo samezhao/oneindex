@@ -1,9 +1,6 @@
 {
 	"name": "test_python_api",
 	"properties": {
-		"folder": {
-			"name": "003"
-		},
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"sessionProperties": {
@@ -16,7 +13,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "0732340f-8bb1-437d-9f20-80fd492d2118"
+				"spark.autotune.trackingId": "cbf91d1b-2beb-4afa-aba4-45b85209e319"
 			}
 		},
 		"metadata": {
