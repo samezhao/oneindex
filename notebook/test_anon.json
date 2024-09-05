@@ -1,0 +1,117 @@
+{
+	"name": "test_anon",
+	"properties": {
+		"folder": {
+			"name": "003"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "62642d78-abdd-4282-80be-ec75b1c02f10"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "python"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"import unittest\r\n",
+					"import test.support\r\n",
+					"from ctypes import *\r\n",
+					"\r\n",
+					"class AnonTest(unittest.TestCase):\r\n",
+					"\r\n",
+					"    def test_anon(self):\r\n",
+					"        class ANON(Union):\r\n",
+					"            _fields_ = [(\"a\", c_int),\r\n",
+					"                        (\"b\", c_int)]\r\n",
+					"\r\n",
+					"        class Y(Structure):\r\n",
+					"            _fields_ = [(\"x\", c_int),\r\n",
+					"                        (\"_\", ANON),\r\n",
+					"                        (\"y\", c_int)]\r\n",
+					"            _anonymous_ = [\"_\"]\r\n",
+					"\r\n",
+					"        self.assertEqual(Y.a.offset, sizeof(c_int))\r\n",
+					"        self.assertEqual(Y.b.offset, sizeof(c_int))\r\n",
+					"\r\n",
+					"        self.assertEqual(ANON.a.offset, 0)\r\n",
+					"        self.assertEqual(ANON.b.offset, 0)\r\n",
+					"\r\n",
+					"    def test_anon_nonseq(self):\r\n",
+					"        # TypeError: _anonymous_ must be a sequence\r\n",
+					"        self.assertRaises(TypeError,\r\n",
+					"                              lambda: type(Structure)(\"Name\",\r\n",
+					"                                                      (Structure,),\r\n",
+					"                                                      {\"_fields_\": [], \"_anonymous_\": 42}))\r\n",
+					"\r\n",
+					"    def test_anon_nonmember(self):\r\n",
+					"        # AttributeError: type object 'Name' has no attribute 'x'\r\n",
+					"        self.assertRaises(AttributeError,\r\n",
+					"                              lambda: type(Structure)(\"Name\",\r\n",
+					"                                                      (Structure,),\r\n",
+					"                                                      {\"_fields_\": [],\r\n",
+					"                                                       \"_anonymous_\": [\"x\"]}))\r\n",
+					"\r\n",
+					"    @test.support.cpython_only\r\n",
+					"    def test_issue31490(self):\r\n",
+					"        # There shouldn't be an assertion failure in case the class has an\r\n",
+					"        # attribute whose name is specified in _anonymous_ but not in _fields_.\r\n",
+					"\r\n",
+					"        # AttributeError: 'x' is specified in _anonymous_ but not in _fields_\r\n",
+					"        with self.assertRaises(AttributeError):\r\n",
+					"            class Name(Structure):\r\n",
+					"                _fields_ = []\r\n",
+					"                _anonymous_ = [\"x\"]\r\n",
+					"                x = 42\r\n",
+					"\r\n",
+					"    def test_nested(self):\r\n",
+					"        class ANON_S(Structure):\r\n",
+					"            _fields_ = [(\"a\", c_int)]\r\n",
+					"\r\n",
+					"        class ANON_U(Union):\r\n",
+					"            _fields_ = [(\"_\", ANON_S),\r\n",
+					"                        (\"b\", c_int)]\r\n",
+					"            _anonymous_ = [\"_\"]\r\n",
+					"\r\n",
+					"        class Y(Structure):\r\n",
+					"            _fields_ = [(\"x\", c_int),\r\n",
+					"                        (\"_\", ANON_U),\r\n",
+					"                        (\"y\", c_int)]\r\n",
+					"            _anonymous_ = [\"_\"]\r\n",
+					"\r\n",
+					"        self.assertEqual(Y.x.offset, 0)\r\n",
+					"        self.assertEqual(Y.a.offset, sizeof(c_int))\r\n",
+					"        self.assertEqual(Y.b.offset, sizeof(c_int))\r\n",
+					"        self.assertEqual(Y._.offset, sizeof(c_int))\r\n",
+					"        self.assertEqual(Y.y.offset, sizeof(c_int) * 2)\r\n",
+					"\r\n",
+					"if __name__ == \"__main__\":\r\n",
+					"    unittest.main()\r\n",
+					""
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
